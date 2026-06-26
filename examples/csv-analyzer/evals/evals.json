@@ -1,0 +1,40 @@
+{
+  "skill_name": "csv-analyzer",
+  "evals": [
+    {
+      "id": "basic-analysis",
+      "prompt": "Analyze the customer data in customers.csv and save the report to analysis.json",
+      "expected_output": "JSON file with row count, column statistics, and missing value counts",
+      "files": ["evals/files/customers.csv"],
+      "graders": [
+        {
+          "type": "file_exists",
+          "path": "analysis.json"
+        },
+        {
+          "type": "json_schema",
+          "path": "analysis.json",
+          "schema": {
+            "type": "object",
+            "required": ["row_count", "columns"],
+            "properties": {
+              "row_count": {"type": "integer", "minimum": 0},
+              "columns": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": ["name", "type"],
+                  "properties": {
+                    "name": {"type": "string"},
+                    "type": {"type": "string", "enum": ["numeric", "string", "date"]},
+                    "missing_count": {"type": "integer", "minimum": 0}
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

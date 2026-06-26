@@ -1,0 +1,80 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+venv/
+ENV/
+env/
+.venv
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.hypothesis/
+
+# Environment files
+.env
+.env.local
+*.env
+
+# Reports
+reports/*.json
+reports/*.html
+reports/*.xml
+reports/*.csv
+!reports/README.md
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Research artifacts (internal development docs, not for OSS distribution)
+docs/research/
+*.egg-info/
+
+# Container runtime
+.podman/
+.docker/
+
+# Security scans
+.trivy/
+grype-db/
+
+# Backup files
+*.bak
+*.backup

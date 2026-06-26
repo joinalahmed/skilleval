@@ -1,0 +1,97 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "skilleval"
+version = "1.0.0"
+description = "Skill Evaluation Framework - 100% deterministic evaluation for AI agent skills"
+readme = "README.md"
+requires-python = ">=3.9"
+license = {text = "MIT"}
+authors = [
+    {name = "SkillEval Contributors", email = "joinalahmed@gmail.com"}
+]
+maintainers = [
+    {name = "SkillEval Contributors", email = "joinalahmed@gmail.com"}
+]
+keywords = [
+    "ai", "agents", "skills", "evaluation", "testing", "security",
+    "owasp", "llm", "skill-evaluation", "agent-skills"
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Testing",
+    "Topic :: Security",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+dependencies = [
+    "pydantic>=2.0.0",
+    "pyyaml>=6.0",
+    "click>=8.0.0",
+    "jsonschema>=4.0.0",
+    "podman>=4.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-cov>=4.0.0",
+    "ruff>=0.1.0",
+    "mypy>=1.0.0",
+    "types-pyyaml",
+]
+security = [
+    "pip-audit>=2.0.0",
+    "grype>=0.60.0",
+]
+all = [
+    "skilleval[dev,security]",
+]
+
+[project.urls]
+Homepage = "https://github.com/skilleval/skilleval"
+Documentation = "https://github.com/skilleval/skilleval/blob/main/README.md"
+Repository = "https://github.com/skilleval/skilleval"
+Issues = "https://github.com/skilleval/skilleval/issues"
+Changelog = "https://github.com/skilleval/skilleval/blob/main/CHANGELOG.md"
+
+[project.scripts]
+skilleval = "skilleval.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = "test_*.py"
+python_classes = "Test*"
+python_functions = "test_*"
+addopts = "-v --cov=skilleval --cov-report=html --cov-report=term"
+
+[tool.ruff]
+line-length = 100
+target-version = "py39"
+select = ["E", "F", "I", "N", "W", "UP"]
+ignore = []
+
+[tool.ruff.per-file-ignores]
+"__init__.py" = ["F401"]
+
+[tool.mypy]
+python_version = "3.9"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
